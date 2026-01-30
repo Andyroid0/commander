@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"strings"
 
 	toml "github.com/pelletier/go-toml/v2"
 )
@@ -26,18 +27,21 @@ func main() {
 	}
 
 	for key, cmd := range cmds_go {
-		for _, arg := range args {
-			if key != arg {
-				continue
-			}
-			cmd := exec.Command("bash", "-c", cmd.(string))
-			out, err := cmd.Output()
-			if err != nil {
-				fmt.Println(err.Error())
-				break
-			}
-			fmt.Println(string(out))
+		arg := args[0]
+		cmd_str := args[1:]
+
+		if key != arg {
+			continue
+		}
+
+		cmd := exec.Command("bash", "-c", strings.Join(append([]string{cmd.(string)}, cmd_str...), " "))
+		out, err := cmd.Output()
+		if err != nil {
+			fmt.Println(err.Error())
 			break
 		}
+
+		fmt.Println(string(out))
+		break
 	}
 }

@@ -1,0 +1,3 @@
+# comment away and add commands to your hearts content.
+start = "echo start"
+ditto = "curl https://pokeapi.co/api/v2/pokemon/ditto"

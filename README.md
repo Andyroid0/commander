@@ -24,7 +24,7 @@ for example -> running:
 4. add ```alias cmd="./path/to/binary"```
 
 ### Steps for use
-1. create a commands.toml file in a project directory of your choice.
+1. create a commands.toml file in a project directory of your choice. (see examples dir.)
 2. run ```~bash cmd [name of command]``` (without square braces.)
 3. see results
 
